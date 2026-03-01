@@ -3,6 +3,7 @@
     --card-bg: white;
     --text-color: #333;
     --shadow: rgba(0, 0, 0, 0.1);
+    --border-color: #eee;
 }
 
 body.dark-mode {
@@ -10,28 +11,77 @@ body.dark-mode {
     --card-bg: #1e1e1e;
     --text-color: #f0f0f0;
     --shadow: rgba(0, 0, 0, 0.5);
+    --border-color: #333;
 }
 
 body {
     font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
+    padding: 20px;
+    min-height: 100vh;
 }
 
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Sidebar Info */
+.lotto-info {
+    flex: 1;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px var(--shadow);
+}
+
+.lotto-info h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+}
+
+.prize-conditions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.prize-conditions li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.draw-table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Main Machine */
 .lotto-machine {
+    flex: 2;
     text-align: center;
     background-color: var(--card-bg);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 0 20px var(--shadow);
-    width: 90%;
-    max-width: 600px;
 }
 
 .controls-top {
@@ -64,7 +114,7 @@ body {
 }
 
 #results-container {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
     margin-bottom: 1.5rem;
 }
@@ -74,12 +124,8 @@ body {
     justify-content: center;
     gap: 10px;
     margin: 1rem 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-body.dark-mode .numbers-display {
-    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .number {
@@ -108,4 +154,15 @@ body.dark-mode .numbers-display {
 
 #draw-button:hover {
     background-color: #45a049;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .lotto-info, .lotto-machine {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
