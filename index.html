@@ -8,9 +8,27 @@
 </head>
 <body>
     <div class="lotto-machine">
+        <div class="controls-top">
+            <button id="theme-toggle">🌙</button>
+        </div>
         <h1>Lotto Number Generator</h1>
-        <div class="numbers-display">
-            <!-- Numbers will be inserted here by JavaScript -->
+        <div class="controls">
+            <label for="set-count">Number of sets:</label>
+            <select id="set-count">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <div id="results-container">
+            <!-- Results will be inserted here -->
         </div>
         <button id="draw-button">Draw Numbers</button>
     </div>
