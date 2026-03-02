@@ -24,6 +24,50 @@ body {
     min-height: 100vh;
 }
 
+.promo-banner {
+    font-family: 'Song Myung', serif;
+    font-size: 60px;
+    text-align: center;
+    margin: 0 auto 30px auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border: 4px solid #ffd700;
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 90%;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.promo-banner-text {
+    background: linear-gradient(45deg, #ffd700, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: blink-glow 1.5s infinite alternate;
+    display: inline-block;
+}
+
+@keyframes blink-glow {
+    0% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.machine-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
 .container {
     display: flex;
     gap: 20px;
@@ -72,6 +116,55 @@ th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+}
+
+/* Partnership Form */
+.partnership-form {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.partnership-form h2 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
 }
 
 /* Main Machine */

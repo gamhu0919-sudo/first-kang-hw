@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lotto Number Drawer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="promo-banner"><span class="promo-banner-text">당신은 이제 로또 당첨자 입니다</span></div>
     <div class="container">
         <aside class="lotto-info">
             <section class="prize-conditions">
@@ -46,13 +48,28 @@
                     </table>
                 </div>
             </section>
+            <section class="partnership-form">
+                <h2>🤝 제휴 문의</h2>
+                <form action="https://formspree.io/f/xjgedqrq" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="성함/업체명" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="_replyto" placeholder="이메일 주소" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="문의 내용을 입력해주세요" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">문의하기</button>
+                </form>
+            </section>
         </aside>
 
         <main class="lotto-machine">
             <div class="controls-top">
                 <button id="theme-toggle">🌙</button>
             </div>
-            <h1>Lotto Number Generator</h1>
+            <h1 class="machine-title">오늘의 행운 번호는?</h1>
             <div class="controls">
                 <label for="set-count">Number of sets:</label>
                 <select id="set-count">
