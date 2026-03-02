@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Drawer</title>
+    <title>로또 번호 추첨기 - 오늘 당신은 당첨자입니다</title>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="promo-banner"><span class="promo-banner-text">당신은 이제 로또 당첨자 입니다</span></div>
+    
     <div class="container">
         <aside class="lotto-info">
             <section class="prize-conditions">
@@ -23,7 +24,7 @@
             </section>
             
             <section class="recent-draws">
-                <h2>📅 최근 10회차 당첨번호</h2>
+                <h2>📅 최근 당첨번호</h2>
                 <div class="draw-table-wrapper">
                     <table>
                         <thead>
@@ -39,26 +40,22 @@
                             <tr><td>1211회</td><td>23, 26, 27, 35, 38, 40</td><td>10</td></tr>
                             <tr><td>1210회</td><td>1, 7, 9, 17, 27, 38</td><td>31</td></tr>
                             <tr><td>1209회</td><td>2, 17, 20, 35, 37, 39</td><td>24</td></tr>
-                            <tr><td>1208회</td><td>6, 27, 30, 36, 38, 42</td><td>25</td></tr>
-                            <tr><td>1207회</td><td>10, 22, 24, 27, 38, 45</td><td>11</td></tr>
-                            <tr><td>1206회</td><td>1, 3, 17, 26, 27, 42</td><td>23</td></tr>
-                            <tr><td>1205회</td><td>1, 4, 16, 23, 31, 41</td><td>2</td></tr>
-                            <tr><td>1204회</td><td>8, 16, 28, 30, 31, 44</td><td>27</td></tr>
                         </tbody>
                     </table>
                 </div>
             </section>
+
             <section class="partnership-form">
                 <h2>🤝 제휴 문의</h2>
                 <form action="https://formspree.io/f/xjgedqrq" method="POST">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="성함/업체명" required>
+                        <input type="text" name="name" class="form-input" placeholder="성함/업체명" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="_replyto" placeholder="이메일 주소" required>
+                        <input type="email" name="_replyto" class="form-input" placeholder="이메일 주소" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="문의 내용을 입력해주세요" required></textarea>
+                        <textarea name="message" class="form-textarea" placeholder="문의 내용을 입력해주세요" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">문의하기</button>
                 </form>
@@ -69,28 +66,65 @@
             <div class="controls-top">
                 <button id="theme-toggle">🌙</button>
             </div>
+            
             <h1 class="machine-title">오늘의 행운 번호는?</h1>
+            
             <div class="controls">
-                <label for="set-count">Number of sets:</label>
-                <select id="set-count">
+                <label for="set-count">추첨 세트 수:</label>
+                <select id="set-count" class="form-select" style="width: auto;">
                     <option value="1">1</option>
-                    <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
+                    <option value="5" selected>5</option>
                     <option value="10">10</option>
                 </select>
             </div>
+
             <div id="results-container">
-                <!-- Results will be inserted here -->
+                <!-- 번호가 여기에 렌더링됩니다 -->
             </div>
-            <button id="draw-button">Draw Numbers</button>
+            
+            <button id="draw-button">행운의 번호 뽑기</button>
+
+            <section id="comment-section">
+                <div id="wish-number-container">
+                    <h3>🍀 당첨 기원 댓글 작성</h3>
+                    
+                    <div class="comment-helper-form">
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label class="form-label">사용자명</label>
+                                <input type="text" id="comment-nickname" class="form-input" placeholder="닉네임">
+                            </div>
+                            <div class="form-col">
+                                <label class="form-label">추첨기원번호</label>
+                                <select id="wish-number-select" class="form-select">
+                                    <option value="">먼저 번호를 뽑아주세요</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">내용</label>
+                            <textarea id="comment-content" class="form-textarea" placeholder="당첨 기원 메시지를 적어주세요!"></textarea>
+                        </div>
+
+                        <div id="formatted-preview" style="display: none;">
+                            <strong>미리보기:</strong> <span id="preview-text"></span>
+                        </div>
+
+                        <button id="copy-comment-btn">댓글 내용 복사하고 Disqus로 이동</button>
+                        <p class="helper-text">* 버튼을 누르면 내용이 복사됩니다. 아래 Disqus 댓글창에 붙여넣어주세요!</p>
+                    </div>
+                </div>
+
+                <!-- Disqus 댓글창 -->
+                <div id="disqus_thread"></div>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
         </main>
     </div>
-    <script src="main.js"></script>
+
+    <!-- 모듈 방식으로 JS 로드 -->
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
